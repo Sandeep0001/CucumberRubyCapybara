@@ -1,0 +1,4 @@
+default: -r test_specs/engine/ -r test_specs/test_definition test_specs
+manual: -r test_specs/engine/ -r test_specs/test_definition test_specs --tags @manual
+sandeep_novpn: -r test_specs/engine/ -r test_specs/test_definition test_specs --tags @sandeep_novpn
+sandeep: -r test_specs/engine/ -r test_specs/test_definition test_specs --tags @sandeep

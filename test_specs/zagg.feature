@@ -1,0 +1,42 @@
+@sandeep
+Feature: Zagg
+
+	Scenario: Checkout on zagg
+		Given I am on "https://www.zagg.com/us/en_us/customer/account/login/" site
+		Then I should see "Existing Customer"
+		When I fill in "login[username]" with "f3b4670a@opayq.com"
+			And I fill in "login[password]" with "fc0vwnTysfhA"
+			And I click on link id "#send2"
+		Then I should see "Account"
+		Given I am on items page "http://www.zagg.com/us/en_us/checkout/cart/"
+		Then I should see "Total"
+		When I click on ".btn-proceed-checkout"
+		When I click on link id "#x-mark-icon"
+		Then I should see "BILLING ADDRESS"
+		When I fill in "billing[firstname]" with "John"
+			And I fill in "billing[lastname]" with "Moe"
+			And I fill in "billing[telephone]" with "6052223254"
+			And I fill in "billing[street][1]" with "280 summer st"
+			And I fill in "billing[street][2]" with "FL 3"
+			And I fill in "billing[city]" with "Boston"
+			And I fill in "billing[postcode]" with "02210"
+		Given I set id for "#billing_address_list .input-region select"
+		When I select "MA" in "#blurclick"
+			And I uncheck "billing:use_for_shipping_yes"
+		When I fill in "shipping[firstname]" with "John"
+			And I fill in "shipping[lastname]" with "Moe"
+			And I fill in "shipping[telephone]" with "6052223254"
+			And I fill in "shipping[street][1]" with "280 summer st"
+			And I fill in "shipping[street][2]" with "FL 3"
+			And I fill in "shipping[city]" with "Boston"
+			And I fill in "shipping[postcode]" with "02210"
+		Given I set id1 for "#shipping_address_list .input-region select"
+		When I select "MA" in "#blurclick1"
+			And I click on link id "#p_method_cybersource_card_processing"
+		Then I sleep for 5 sec
+		When I click on link id "#p_method_cybersource_card_processing"
+			And I select "VI" in "#cybersource_card_processing_cc_type"
+			And I fill in "payment[cc_number]" with "4111111111111111"
+			And I select "10" in "#cybersource_card_processing_expiration"
+			And I select "2024" in "#cybersource_card_processing_expiration_yr"
+			

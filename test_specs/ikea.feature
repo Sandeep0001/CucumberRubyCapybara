@@ -1,0 +1,42 @@
+@sandeep
+Feature: Ikea
+
+	Scenario: Checkout on ikea
+		Given I am on "http://www.ikea.com/us/en/" site
+		When I click on link id "#_89dtealiumModalClose"
+			And I click on text "Log In or Sign Up" with ".arrowLink"
+		Then I should see "Remember me"
+		When I fill in "logonId" with "00729362@opayq.com"
+			And I fill in "logonPassword" with "xYthn5wy6V"
+			And I click on "#login .orangeBtn"
+		Then I should see "Hello"
+		When I click on link id "#link_header_shopping_cart"
+		Then I should see "Continue Shopping"
+			And I clear cart if I see "delete" and I click on ".colDelete a" and I dont do anything if I see "Your shopping cart is empty"
+		Given I am on items page "http://www.ikea.com/us/en/catalog/products/S39023492/"
+		Then I should see "View more images"
+		When I click on link id "#jsButton_buyOnline_lnk"
+			And I click on link id "#link_header_shopping_cart"
+		Then I should see "Continue Shopping"
+		When I click on link id "#jsButton_beginCheckOut_01"
+		Then I should see "Billing address"
+		When I fill in "firstName" with "Jack"
+			And I fill in "lastName" with "pro"
+			And I fill in "address1" with "280 summer st"
+			And I fill in "address2" with "FL 3"
+			And I select "MA" in "#signup_checkout_private_state"
+			And I fill in "zipCode" with "02210"
+			And I fill in "city" with "Boston"
+			And I fill in "email1" with "00729362@opayq.com"
+			And I fill in "phone1" with "6052221542"
+			And I click on link id "#submitButton_IrwAddressDetails"
+		Then I should see "Delivery options"
+		When I click on link id "#submitButton_IrwDeliveryOptions"
+		Then I should see "Review Your Order and Pay"
+			And I sleep for 5 sec
+		Given I switch to nested iframe1 "paymentFormIframe" and iframe2 "frontend_data"
+		When I fill in "cardNumber" with "4111111111111111"
+			And I select "10" in "#accountExpiryMonth"
+			And I select "2024" in "#accountExpiryYear"
+			And I fill in "accountVerification" with "485"
+		

@@ -1,0 +1,42 @@
+@sandeep
+Feature: Bedbathandbeyond
+
+	Scenario: Checkout on bedbathandbeyond
+		Given I am on "https://www.bedbathandbeyond.com/store/account/Login" site
+		Then I should see "Have an Account"
+		When I fill in id "#email" with "avsvdv@opayq.com"
+			And I fill in "loginPasswd" with "rfrL0wb2-M"
+			And I click on link id "#signinButton"
+		Then I should see "Hi, Kapil"
+		When I click on link id "#shoppingCartItems"
+		Then I should see "Your Cart"
+		When I click on ".singlePageCheckout .triggerSubmit"
+		Then I should see "Shipping"
+		When I click on link id "#addNewAddress"
+		Then I should see "First Name"
+		When I fill in "checkoutfirstName" with "John"
+			And I fill in "checkoutlastName" with "Moe"
+			And I fill in "address1" with "280 summer st"
+			And I fill in "address2" with "FL 3"
+			And I fill in "zip" with "02210"
+			And I fill in "cityName" with "Boston"
+			And I select "MA" in "#stateName"
+			And I fill in "basePhoneFull" with "6052223214"
+			And I fill in "shippingEmail" with "avsvdv@opayq.com"
+			And I click on link id "#addNewBillingAddress"
+		Then I should see "First Name"
+		When I fill in "billingFirstName" with "John"
+			And I fill in "billingLastName" with "Moe"
+			And I fill in "BillingAddress1" with "280 summer st"
+			And I fill in "BillingAddress2" with "FL 3"
+			And I fill in "BillingZip" with "02210"
+			And I fill in "BillingCityName" with "Boston"
+			And I select "MA" in "#billingStateName"
+		Then I should see "Payment"
+		When I fill in id "#cardNumber" with "4111111111111111"
+			And I fill in id "#securityCode" with "425"
+			And I select "10" in "#creditCardMonth"
+			And I select "2024" in "#creditCardYear"
+			And I fill in id "#nameCard" with "John cal"
+			
+		

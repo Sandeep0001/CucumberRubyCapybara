@@ -1,0 +1,43 @@
+@sandeep
+Feature: Evine
+
+	Scenario: Checkout on evine
+		Given I am on "https://www.evine.com/" site
+		When I click on ".ui-dialog-titlebar-close"
+			And I click on href "/Account/Login?cm_re=GH_SignIn&returnUrl=http%3A%2F%2Fwww.evine.com%2F"
+		Then I should see "Forgot your password"
+		When I fill in "PasswordEmail" with "c7990673@opayq.com"
+			And I fill in "Password" with "3tvUomwj1qqZ"
+			And I click on link id "#PasswordLoginSubmit"
+		Then I should see "John"
+		When I click on ".cartimg"
+		Then I should see "your cart"
+		When I click on link id "#BaseMasterMiddlePH_MVCNextButtonTop_FormSubmitImage"
+		Then I sleep for 5 sec
+		Given I switch to iframe "ifmCCForm"
+		Then I should see "Save as primary"
+		When I click on link id "#cphBody_optCreditCards"
+		Given I switch to iframe "vantiv-payframe"
+			And I fill in "accountNumber" with "4111111111111111"
+			And I select "10" in "#expMonth"
+			And I select "24" in "#expYear"
+			And I fill in "cvv" with "456"
+		Given I switch to default content
+		When I click on link id "#BaseMasterMiddlePH_CheckoutPH_ucBillingAddress_EditAdd"
+			And I check "BaseMasterMiddlePH_CheckoutPH_ucBillingAddress_NewAddressCheckbox"
+			And I fill in "ctl00$ctl00$BaseMasterMiddlePH$CheckoutPH$ucBillingAddress$AddressLine1" with "280 summer st"
+			And I fill in "ctl00$ctl00$BaseMasterMiddlePH$CheckoutPH$ucBillingAddress$AddressLine2" with "FL 3"
+			And I fill in "ctl00$ctl00$BaseMasterMiddlePH$CheckoutPH$ucBillingAddress$AddressCity" with "Boston"
+			And I select "MA" in "#BaseMasterMiddlePH_CheckoutPH_ucBillingAddress_AddressStateProvince"
+			And I fill in "ctl00$ctl00$BaseMasterMiddlePH$CheckoutPH$ucBillingAddress$AddressZipCode" with "02210"
+			And I uncheck "BaseMasterMiddlePH_CheckoutPH_ucBillingAddress_NewAddressCheckbox"
+			And I click on link id "#BaseMasterMiddlePH_CheckoutPH_ucBillingAddress_CancelSelect"
+			And I click on link id "#BaseMasterMiddlePH_CheckoutPH_ucShippingAddress_EditAdd"
+			And I check "BaseMasterMiddlePH_CheckoutPH_ucShippingAddress_NewAddressCheckbox"
+			And I fill in "ctl00$ctl00$BaseMasterMiddlePH$CheckoutPH$ucShippingAddress$AddressFirstName" with "John"
+			And I fill in "ctl00$ctl00$BaseMasterMiddlePH$CheckoutPH$ucShippingAddress$AddressLastName" with "Moe"
+			And I fill in "ctl00$ctl00$BaseMasterMiddlePH$CheckoutPH$ucShippingAddress$AddressLine1" with "280 summer st"
+			And I fill in "ctl00$ctl00$BaseMasterMiddlePH$CheckoutPH$ucShippingAddress$AddressLine2" with "FL 3"
+			And I fill in "ctl00$ctl00$BaseMasterMiddlePH$CheckoutPH$ucShippingAddress$AddressCity" with "Boston"
+			And I select "MA" in "#BaseMasterMiddlePH_CheckoutPH_ucShippingAddress_AddressStateProvince"
+			And I fill in "ctl00$ctl00$BaseMasterMiddlePH$CheckoutPH$ucShippingAddress$AddressZipCode" with "02210"

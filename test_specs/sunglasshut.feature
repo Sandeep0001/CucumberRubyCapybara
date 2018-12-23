@@ -1,0 +1,47 @@
+@sandeep
+Feature: Sunglasshut
+
+	Scenario: Checkout on sunglasshut
+		Given I am on "https://www.sunglasshut.com/UserSignInView?catalogId=10101&langId=-1&storeId=10152" site
+		When I click on ".ui-dialog-titlebar-close"
+		Then I should see "FORGOT YOUR PASSWORD"
+		When I fill in "logonId" with "a1d70aec@opayq.com"
+			And I fill in "logonPassword" with "2rtzxpvqoDlV"
+			And I click on link id "#WC_AccountDisplay_links_2"
+		Then I should see "JOHN"
+		When I click on ".cart"
+		Then I should see "YOUR SHOPPING BAG"
+		When I click on ".checkoutbutton"
+		Then I should see "SHIPPING"
+		When I click on link id "#WC_ShippingAddressSelectSingle_link_1"
+		Then I should see "FIRST NAME"
+		When I fill in "firstName" with "John"
+			And I fill in "lastName" with "Moe"
+			And I fill in "address1" with "280 summer st"
+			And I fill in "address2" with "FL 3"
+			And I fill in "zipCode" with "02210"
+			And I fill in "city" with "Boston"
+			And I select "MA" in "#state"
+			And I fill in "phone1" with "6052223254"
+		Then I sleep for 5 sec
+		When I click on link id "#WC_ShopcartAddressFormDisplay_links_1"
+		Then I sleep for 5 sec
+		When I click on link id "#ContinueToBilling"
+		Then I should see "PAYMENT METHOD"
+		When I fill in "account" with "4111111111111111"
+			And I fill in "cc_cvc" with "465"
+			And I select "10" in "#expire_month_1"
+			And I select "2024" in "#expire_year_1"
+			And I click on ".same_shipping"
+			And I fill in "firstName" with "John"
+			And I fill in "lastName" with "Moe"
+			And I fill in "address1" with "280 summer st"
+			And I fill in "address2" with "FL 3"
+			And I fill in "zipCode" with "02210"
+			And I fill in "city" with "Boston"
+			And I select "MA" in "#WC__ShoppingCartAddressEntryForm_billingAddressCreateEditFormDiv_1_state_1"
+			And I fill in "phone1_1" with "605"
+			And I fill in "phone1_2" with "222"
+			And I fill in "phone1_3" with "4568"
+			And I fill in "email1" with "a1d70aec@opayq.com"
+			

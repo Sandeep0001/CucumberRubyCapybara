@@ -1,0 +1,32 @@
+@sandeep
+Feature: Bodybuilding
+
+	Scenario: Checkout on bodybuilding
+		Given I am on "http://www.bodybuilding.com/" site
+		When I click on ".ProfileMenu__trigger"
+		Then I should see "Log in"
+		When I fill in "username" with "42007a1f@opayq.com"
+			And I fill in "password" with "ckSo3esoremD"
+			And I click on ".js-login"
+		Then I should see "bkdvfjbhv"
+		When I click on ".MiniCart__icon"
+		Then I should see "Your Cart"
+		When I click on link id "#proceed-to-checkout-bottom"
+			And I fill in "password" with "ckSo3esoremD"
+			And I click on ".login-form .bb-flat-btn"
+		Then I should see "HOW WOULD YOU LIKE"
+		When I click on ".payment-method-cc"
+		Then I should see "ENTER A NEW CREDIT CARD"
+		When I fill in "CardholderName" with "John Moe"
+			And I fill in "CreditCardNumber" with "4111111111111111"
+			And I select "10" in "#expiry_month"
+			And I select "2024" in "#expiry_year"
+			And I fill in "CardCVV" with "458"
+			And I fill in "FirstName" with "John"
+			And I fill in "LastName" with "Moe"
+			And I fill in "Address" with "280 summer st"
+			And I fill in "Address2" with "FL 3"
+			And I fill in "City" with "Boston"
+			And I select "MA" in "#us-states"
+			And I fill in "ZipCode" with "02210"
+			And I fill in "PhoneNumber" with "6052223256"
